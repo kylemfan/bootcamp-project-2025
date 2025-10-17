@@ -3,23 +3,24 @@ var blogs = [
         title: "My Hometown",
         date: "10/16/2025",
         description: "A blog about where I'm from!",
-        image: "placeholder",
-        imageAlt: "placeholder",
-        slug: "my-hometown"
+        image: "blog-images/GoldenGateBridge_IconicBridgePhoto.jpg",
+        imageAlt: "An image of the Golden Gate Bridge",
+        slug: "my-hometown",
     },
     {
         title: "My Interests",
         date: "10/16/2025",
         description: "A blog about the things I'm interested in!",
-        image: "placeholder",
-        imageAlt: "placeholder",
-        slug: "my-interests"
+        image: "blog-images/rallyaviation.jpg",
+        imageAlt: "An image of a helicopter chasing a Rally car",
+        slug: "my-interests",
     },
 ];
 var blogContainer = document.getElementById("blog-container");
 function loadBlogs() {
     blogs.forEach(function (blog) {
         var link = document.createElement("a");
+        link.className = "post-link";
         link.href = "blog-posts/" + blog.slug + ".html";
         blogContainer === null || blogContainer === void 0 ? void 0 : blogContainer.appendChild(link);
         var blogPost = document.createElement("div");
@@ -35,6 +36,7 @@ function loadBlogs() {
         date.innerHTML = blog.description;
         blogPost.appendChild(description);
         var image = document.createElement("img");
+        image.className = "post-preview-img";
         image.src = blog.image;
         image.alt = blog.imageAlt;
         blogPost.appendChild(image);
