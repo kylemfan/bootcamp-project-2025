@@ -228,7 +228,14 @@ main {
 .post-img {
   border-radius: 5px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+#ggb {
   max-width: 20%;
+}
+
+#ra {
+  max-width: 35%;
 }
 
 .post-article {
@@ -245,6 +252,15 @@ main {
   display: block;
   margin: 30px auto 30px;
   width: 550px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+#quattro_gif {
+  display: block;
+  margin: 30px auto 30px;
+  width: 250px;
   height: auto;
   border-radius: 5px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
