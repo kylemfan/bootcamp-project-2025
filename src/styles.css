@@ -225,7 +225,7 @@ main {
   object-fit: cover;
 }
 
-.post-img {
+.post-header-img {
   border-radius: 5px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
@@ -248,16 +248,7 @@ main {
   max-width: 700px; /* keeps long lines readable */
 }
 
-#alhs_gumball {
-  display: block;
-  margin: 30px auto 30px;
-  width: 550px;
-  height: auto;
-  border-radius: 5px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-}
-
-#pov_gif {
+.post-img {
   display: block;
   margin: 30px auto 30px;
   width: 550px;
