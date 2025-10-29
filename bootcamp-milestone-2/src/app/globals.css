@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+:root {
+  /* variables */
+  --cg-black: rgb(30, 32, 32);
+  --cg-navy: rgb(14, 58, 82);
+  --cg-blue: rgb(36, 94, 255);
+  --cg-grey: rgb(243, 243, 243);
+  --cg-white: rgb(255, 255, 255);
+}
