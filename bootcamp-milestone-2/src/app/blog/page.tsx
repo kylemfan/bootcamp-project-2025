@@ -1,12 +1,16 @@
 import React from "react";
-import style from "./blog.module.css";
+import BlogPreview from "@/components/blogPreview";
+import blogs from "../blogData";
 
 export default function BlogPage() {
   return (
     <main>
-      <h1 className={style["page-title"]}>Blog</h1>
-      <div className={style.blogs} id="blog-container"></div>
-      {/* <script src="src/blog.js"></script> */}
+      <h1>Blog</h1>
+      <div>
+        {blogs.map((blog, index) => (
+          <div key={index}>{<BlogPreview {...blog} />}</div>
+        ))}
+      </div>
     </main>
   );
 }
