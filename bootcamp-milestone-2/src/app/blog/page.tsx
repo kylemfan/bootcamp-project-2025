@@ -1,6 +1,7 @@
 import React from "react";
 import BlogPreview from "@/components/blogPreview";
 import blogs from "../blogData";
+import Link from "next/link";
 
 export default function BlogPage() {
   return (
@@ -8,7 +9,9 @@ export default function BlogPage() {
       <h1>Blog</h1>
       <div>
         {blogs.map((blog, index) => (
-          <div key={index}>{<BlogPreview {...blog} />}</div>
+          <Link key={index} href={`/blog/${blog.slug}`}>
+            <div>{<BlogPreview {...blog} />}</div>
+          </Link>
         ))}
       </div>
     </main>
