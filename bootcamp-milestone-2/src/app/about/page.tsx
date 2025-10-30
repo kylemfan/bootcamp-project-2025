@@ -1,8 +1,11 @@
+import React from "react";
+import style from "./about.module.css";
+
 export default function contactPage() {
   return (
     <main>
-      <h1 className="page-title">Send a Message</h1>
-      <form id="contact-form">
+      <h1 className={style["page-title"]}>Send a Message</h1>
+      <form className={style["contact-form"]}>
         <label htmlFor="name">Name:</label>
         <input type="text" id="name" placeholder="Name" required />
         <label htmlFor="email">Email:</label>
