@@ -6,7 +6,7 @@ export default function ResumePage() {
     <main>
       <div className={style.resume}>
         <h1 className={style["page-title"]}>Resume</h1>
-        {/* <a href="Resume - Kyle Fan.pdf" download>Download Resume</a> */}
+        <a href="/files/Resume - Kyle Fan.pdf" download>Download Resume</a>
         <section className={style.section}>
           <h2 className={style["section-title"]}>Education</h2>
           <div className={style.entry}>
