@@ -3,8 +3,32 @@
 :root {
   /* variables */
   --cg-black: rgb(30, 32, 32);
-  --cg-navy: rgb(14, 58, 82);
+  --cg-navy: rgb(18, 55, 75);
   --cg-blue: rgb(36, 94, 255);
   --cg-grey: rgb(243, 243, 243);
   --cg-white: rgb(255, 255, 255);
+}
+
+html {
+  height: 100%;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+main {
+  padding: 0 20px 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-title {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  font-family: Georgia;
 }
