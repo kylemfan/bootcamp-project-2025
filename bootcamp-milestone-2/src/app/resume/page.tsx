@@ -1,27 +1,30 @@
+import React from "react";
+import style from "./resume.module.css";
+
 export default function ResumePage() {
   return (
     <main>
-      <div className="resume">
-        <h1 className="page-title">Resume</h1>
-        <a href="Resume - Kyle Fan.pdf" download>Download Resume</a>
-        <section className="section">
-          <h2 className="section-title">Education</h2>
-          <div className="entry">
-            <h3 className="entry-title">Computer Science (B.S.)</h3>
-            <p className="entry-info"></p>
-            <p className="section-text">
+      <div className={style.resume}>
+        <h1 className={style["page-title"]}>Resume</h1>
+        {/* <a href="Resume - Kyle Fan.pdf" download>Download Resume</a> */}
+        <section className={style.section}>
+          <h2 className={style["section-title"]}>Education</h2>
+          <div className={style.entry}>
+            <h3 className={style["entry-title"]}>Computer Science (B.S.)</h3>
+            <p className={style["entry-info"]}></p>
+            <p className={style["section-text"]}>
               California Polytechnic State University, San Luis Obispo<br />
               Expected Graduation: June 2026<br />
             </p>
           </div>
         </section>
-        <section className="section">
-          <h2 className="section-title">Relevant Coursework</h2>
-          <div className="entry">
-            <h3 className="entry-title"></h3>
-            <p className="entry-info"></p>
-            <p className="entry-description"></p>
-            <p className="section-text">
+        <section className={style.section}>
+          <h2 className={style["section-title"]}>Relevant Coursework</h2>
+          <div className={style.entry}>
+            <h3 className={style["entry-title"]}></h3>
+            <p className={style["entry-info"]}></p>
+            <p className={style["entry-description"]}></p>
+            <p className={style["section-text"]}>
               <ul>
                 <li>Systems Programming</li>
                 <li>Database Systems</li>
@@ -32,13 +35,13 @@ export default function ResumePage() {
             </p>
           </div>
         </section>
-        <section className="section">
-          <h2 className="section-title">Skills</h2>
-          <div className="entry">
-            <h3 className="entry-title"></h3>
-            <p className="entry-info"></p>
-            <p className="entry-description"></p>
-            <p className="section-text">
+        <section className={style.section}>
+          <h2 className={style["section-title"]}>Skills</h2>
+          <div className={style.entry}>
+            <h3 className={style["entry-title"]}></h3>
+            <p className={style["entry-info"]}></p>
+            <p className={style["entry-description"]}></p>
+            <p className={style["section-text"]}>
               <ul>
                 <li>Programming Languages: Python, Java, C, JavaScript</li>
                 <li>Web Development: HTML, CSS, React</li>
@@ -50,13 +53,13 @@ export default function ResumePage() {
             </p>
           </div>
         </section>
-        <section className="section">
-          <h2 className="section-title">Projects</h2>
-          <div className="entry">
-            <h3 className="entry-title"><strong>Paper Trading API</strong> | Python, FastAPI, bcrypt, PostgreSQL, Supabase, Render</h3>
-            <p className="entry-info"></p>
-            <p className="entry-description"></p>
-            <p className="section-text">
+        <section className={style.section}>
+          <h2 className={style["section-title"]}>Projects</h2>
+          <div className={style.entry}>
+            <h3 className={style["entry-title"]}><strong>Paper Trading API</strong> | Python, FastAPI, bcrypt, PostgreSQL, Supabase, Render</h3>
+            <p className={style["entry-info"]}></p>
+            <p className={style["entry-description"]}></p>
+            <p className={style["section-text"]}>
               <em>Built and secured a collaborative paper trading API project</em><br />
               <ul>
                 <li>

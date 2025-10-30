@@ -1,7 +1,7 @@
 export default function contactPage() {
   return (
     <main>
-      <h1 className="page-title">Contact</h1>
+      <h1 className="page-title">Send a Message</h1>
       <form id="contact-form">
         <label htmlFor="name">Name:</label>
         <input type="text" id="name" placeholder="Name" required />
