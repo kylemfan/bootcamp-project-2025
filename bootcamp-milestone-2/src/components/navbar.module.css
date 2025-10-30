@@ -14,11 +14,11 @@
   background-color: var(--cg-navy);
   color: var(--cg-white);
   padding: 0px 0px;
-
 }
 
 .nav-list {
   display: flex;
+  font-size: large;
   flex-direction: row;
   position: relative;
   right: 30px;
@@ -46,6 +46,7 @@
 
 .logo a {
   font-family: Georgia;
+  font-size: 30px;
 }
 
 .logo a:hover {
