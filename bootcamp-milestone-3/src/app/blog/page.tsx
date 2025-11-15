@@ -8,8 +8,8 @@ async function getBlogs() {
   await connectDB();
 
   try {
-    const blogs = await Blog.find().sort({ date: -1 }).orFail()
-    return blogs;
+    const blogs = await Blog.find().sort({ date: -1 }).orFail();
+    return JSON.parse(JSON.stringify(blogs));
   } catch (err) {
     console.error(err);
     return null;
@@ -18,7 +18,7 @@ async function getBlogs() {
 
 export default async function BlogPage() {
   const blogs = await getBlogs();
-  
+
   if (!blogs) {
     return (
       <main>
@@ -41,7 +41,7 @@ export default async function BlogPage() {
       <h1>Blog</h1>
       <div>
         {blogs.map((blog) => (
-          <Link key={blog._id.toString()} href={`/blog/${blog.slug}`}>
+          <Link key={blog._id} href={`/blog/${blog.slug}`}>
             <div>{<BlogPreview {...blog} />}</div>
           </Link>
         ))}
