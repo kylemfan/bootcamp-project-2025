@@ -22,7 +22,6 @@ export default async function BlogPage() {
   if (!blogs) {
     return (
       <main>
-        <h1>Blog</h1>
         <p>Failed to load blogs. Please try again later.</p>
       </main>
     );
@@ -30,7 +29,6 @@ export default async function BlogPage() {
   if (blogs.length === 0) {
     return (
       <main>
-        <h1>Blog</h1>
         <p>No blogs found.</p>
       </main>
     );

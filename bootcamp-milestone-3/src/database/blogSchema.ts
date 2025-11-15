@@ -19,8 +19,7 @@ const blogSchema = new Schema<Blog>(
     image: { type: String, required: true },
     image_alt: { type: String, required: true },
     content: { type: String, required: true },
-  },
-  { collection: "blogs" }
+  }
 );
 
 const Blog = mongoose.models["blogs"] || mongoose.model("blogs", blogSchema);
