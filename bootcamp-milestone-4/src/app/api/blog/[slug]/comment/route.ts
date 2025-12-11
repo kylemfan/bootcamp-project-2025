@@ -4,13 +4,13 @@ import Blogs from "@/database/blogSchema";
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
     await connectDB();
 
-    const BlogSlug = await params.slug; // gets the slug from the URL
-    const body = await req.json(); // actual json body of the request
+    const { slug } = await params;
+    const body = await req.json();
 
     // validate the body
     if (!body.user || !body.content) {
@@ -23,14 +23,18 @@ export async function POST(
       time: new Date(),
     };
 
-    // save comment to mongodb
+    // add comment to db
     const updatedBlog = await Blogs.findOneAndUpdate(
-      { slug: BlogSlug },
+      { slug },
       { $push: { comments: commentToAdd } },
       { new: true, runValidators: true },
-    )
+    );
+
     if (!updatedBlog) {
-      return NextResponse.json({ error: "Could not find blog" }, { status: 404 });
+      return NextResponse.json(
+        { error: "Could not find blog" },
+        { status: 404 },
+      );
     }
 
     return NextResponse.json(
@@ -38,14 +42,13 @@ export async function POST(
         message: "Comment succesfully posted",
         addedComment: commentToAdd,
       },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (err) {
-    // log the error and give error in the response
     console.log(`Error: ${err}`);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

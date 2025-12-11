@@ -2,13 +2,15 @@ import React from "react";
 import BlogPreview from "@/components/blogPreview";
 import Link from "next/link";
 import connectDB from "@/database/db";
-import Blog from "@/database/blogSchema";
+import BlogModel, { Blog as BlogType } from "@/database/blogSchema";
+
+type BlogWithId = BlogType & { _id: string };
 
 async function getBlogs() {
   await connectDB();
 
   try {
-    const blogs = await Blog.find().sort({ date: -1 }).orFail();
+    const blogs = await BlogModel.find().sort({ date: -1 }).orFail();
     return JSON.parse(JSON.stringify(blogs));
   } catch (err) {
     console.error(err);
@@ -38,7 +40,7 @@ export default async function BlogPage() {
     <main>
       <h1>Blog</h1>
       <div>
-        {blogs.map((blog) => (
+        {blogs.map((blog: BlogWithId) => (
           <Link key={blog._id} href={`/blog/${blog.slug}`}>
             <div>{<BlogPreview {...blog} />}</div>
           </Link>

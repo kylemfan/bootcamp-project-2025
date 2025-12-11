@@ -4,12 +4,12 @@ import Projects from "@/database/projectSchema";
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
 
-    const projectId = await params.id;
+    const { id } = await params;
     const body = await req.json(); // actual json body of the request
 
     // validate the body
@@ -25,7 +25,7 @@ export async function POST(
 
     // save comment to mongodb
     const updatedPortfolio = await Projects.findByIdAndUpdate(
-      projectId,
+      id,
       { $push: { comments: commentToAdd } },
       { new: true, runValidators: true },
     )

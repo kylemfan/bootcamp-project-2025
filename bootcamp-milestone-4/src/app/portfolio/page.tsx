@@ -2,10 +2,12 @@ import React from "react";
 import ProjectPreview from "@/components/projectPreview";
 import Link from "next/link";
 import connectDB from "@/database/db";
-import projectSchema from "@/database/projectSchema";
+import projectSchema, { Project as ProjectType, IComment } from "@/database/projectSchema";
 import Comment from '@/components/comment';
 
-async function getProjects() {
+type ProjectWithId = ProjectType & { _id: string };
+
+async function getProjects(): Promise<ProjectWithId[] | null> {
   await connectDB();
 
   try {
@@ -39,7 +41,7 @@ export default async function PortfolioPage() {
     <main>
       <h1>Portfolio</h1>
       <div>
-        {projects.map((project: any) => (
+        {projects.map((project: ProjectWithId) => (
           <Link key={project._id} href={`${project.link}`} target="_blank" rel="noopener noreferrer">
             <div>{<ProjectPreview {...project} />}</div>
           </Link>
@@ -48,8 +50,8 @@ export default async function PortfolioPage() {
       <h1>Comments</h1>
       <div>
         {
-          projects.map((project: any) => (
-            project.comments.map((comment: any, index: any) => (
+          projects.map((project: ProjectWithId) => (
+            project.comments.map((comment: IComment, index: number) => (
               <Comment key={index} comment={comment}/>
             ))
           ))

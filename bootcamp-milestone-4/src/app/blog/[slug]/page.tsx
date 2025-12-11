@@ -6,15 +6,15 @@ import Comment from "@/components/comment";
 import style from "@/app/blog/[slug]/post.module.css";
 
 type IParams = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export default async function Blog({ params }: IParams) {
   await connectDB();
 
-  const { slug } = params;
+  const { slug } = await params;
 
   // get a plain JS object typed as BlogType
   const blog = await BlogModel.findOne({ slug }).lean<BlogType>().exec();
