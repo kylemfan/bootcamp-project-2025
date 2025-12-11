@@ -1,40 +1,47 @@
-import connectDB from '@/database/db';
-import blogSchema from '@/database/blogSchema';
-import { notFound } from 'next/navigation';
-import Image from "next/image"
-import Comment from '@/components/comment';
-import style from "@/app/blog/[slug]/post.module.css"
+import connectDB from "@/database/db";
+import BlogModel, { Blog as BlogType, IComment } from "@/database/blogSchema";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import Comment from "@/components/comment";
+import style from "@/app/blog/[slug]/post.module.css";
 
 type IParams = {
-  params: Promise<{
-    slug: string
-  }>;
-}
+  params: {
+    slug: string;
+  };
+};
 
 export default async function Blog({ params }: IParams) {
   await connectDB();
-  const { slug } = await params;
-  const blog = await blogSchema.findOne({ slug }).orFail();
+
+  const { slug } = params;
+
+  // get a plain JS object typed as BlogType
+  const blog = await BlogModel.findOne({ slug }).lean<BlogType>().exec();
 
   if (!blog) {
     return notFound();
   }
+
   return (
     <main>
       <h1>{blog.title}</h1>
+
       <Image
         src={blog.image}
         alt={blog.image_alt}
-        width="300"
-        height="300"
+        width={300}
+        height={300}
       />
+
       <article className={style["post-article"]}>
         <p>{blog.content}</p>
       </article>
+
       <h1>Comments</h1>
       <div>
-        {blog.comments.map((comment: any, index: any) => (
-          <Comment key={index} comment={comment}/>
+        {blog.comments.map((comment: IComment, index: number) => (
+          <Comment key={index} comment={comment} />
         ))}
       </div>
     </main>
