@@ -1,0 +1,62 @@
+/* CSS for contact form */
+.page-title {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: Georgia, serif;
+}
+
+/* Form wrapper */
+.contact-form {
+  width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.contact-form label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-family: Georgia, serif;
+}
+
+/* Inputs + textarea */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Focus effect */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #0070f3;
+  box-shadow: 0 0 4px rgba(0, 118, 255, 0.4);
+  outline: none;
+}
+
+/* Submit button */
+.contact-form button {
+  padding: 12px;
+  font-size: 16px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.2s ease;
+}
+
+.contact-form button:hover {
+  background-color: #0057c2;
+}
