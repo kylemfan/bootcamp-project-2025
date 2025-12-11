@@ -33,8 +33,7 @@ export default async function Blog({ params }: IParams) {
       </article>
       <h1>Comments</h1>
       <div>
-        {/* TODO: ADD STYLING TO COMMENTS */}
-        {blog.comments.map((comment, index) => (
+        {blog.comments.map((comment: any, index: any) => (
           <Comment key={index} comment={comment}/>
         ))}
       </div>

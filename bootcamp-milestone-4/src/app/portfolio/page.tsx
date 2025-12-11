@@ -2,13 +2,14 @@ import React from "react";
 import ProjectPreview from "@/components/projectPreview";
 import Link from "next/link";
 import connectDB from "@/database/db";
-import Project from "@/database/projectSchema";
+import projectSchema from "@/database/projectSchema";
+import Comment from '@/components/comment';
 
 async function getProjects() {
   await connectDB();
 
   try {
-    const projects = await Project.find().sort({ date: -1 }).orFail();
+    const projects = await projectSchema.find().sort({ date: -1 }).orFail();
     return JSON.parse(JSON.stringify(projects));
   } catch (err) {
     console.error(err);
@@ -16,7 +17,7 @@ async function getProjects() {
   }
 }
 
-export default async function BlogPage() {
+export default async function PortfolioPage() {
   const projects = await getProjects();
 
   if (!projects) {
@@ -38,11 +39,21 @@ export default async function BlogPage() {
     <main>
       <h1>Portfolio</h1>
       <div>
-        {projects.map((project) => (
+        {projects.map((project: any) => (
           <Link key={project._id} href={`${project.link}`} target="_blank" rel="noopener noreferrer">
             <div>{<ProjectPreview {...project} />}</div>
           </Link>
         ))}
+      </div>
+      <h1>Comments</h1>
+      <div>
+        {
+          projects.map((project: any) => (
+            project.comments.map((comment: any, index: any) => (
+              <Comment key={index} comment={comment}/>
+            ))
+          ))
+        }
       </div>
     </main>
   );
