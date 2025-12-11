@@ -2,8 +2,12 @@ import React from "react";
 import ProjectPreview from "@/components/projectPreview";
 import Link from "next/link";
 import connectDB from "@/database/db";
-import projectSchema, { Project as ProjectType, IComment } from "@/database/projectSchema";
-import Comment from '@/components/comment';
+import projectSchema, {
+  Project as ProjectType,
+  IComment,
+} from "@/database/projectSchema";
+import PortfolioComment from "@/components/portfolioComment";
+import CommentForm from "@/components/portfolioCommentForm";
 
 type ProjectWithId = ProjectType & { _id: string };
 
@@ -42,20 +46,33 @@ export default async function PortfolioPage() {
       <h1>Portfolio</h1>
       <div>
         {projects.map((project: ProjectWithId) => (
-          <Link key={project._id} href={`${project.link}`} target="_blank" rel="noopener noreferrer">
+          <Link
+            key={project._id}
+            href={`${project.link}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <div>{<ProjectPreview {...project} />}</div>
           </Link>
         ))}
       </div>
+      <CommentForm
+        projects={projects.map((p) => ({
+          id: p._id, // this is what the API expects
+          label: p.title || p.link || "Untitled project",
+        }))}
+      />
       <h1>Comments</h1>
       <div>
-        {
-          projects.map((project: ProjectWithId) => (
-            project.comments.map((comment: IComment, index: number) => (
-              <Comment key={index} comment={comment}/>
-            ))
+        {projects.map((project: ProjectWithId) =>
+          project.comments.map((comment: IComment, index: number) => (
+            <PortfolioComment
+              key={index}
+              comment={comment}
+              projectName={project.title ?? "Untitled Project"}
+            />
           ))
-        }
+        )}
       </div>
     </main>
   );

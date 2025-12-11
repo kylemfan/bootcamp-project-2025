@@ -2,8 +2,9 @@ import connectDB from "@/database/db";
 import BlogModel, { Blog as BlogType, IComment } from "@/database/blogSchema";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Comment from "@/components/comment";
+import BlogComment from "@/components/blogComment";
 import style from "@/app/blog/[slug]/post.module.css";
+import CommentForm from "@/components/blogCommentForm";
 
 type IParams = {
   params: Promise<{
@@ -27,21 +28,17 @@ export default async function Blog({ params }: IParams) {
     <main>
       <h1>{blog.title}</h1>
 
-      <Image
-        src={blog.image}
-        alt={blog.image_alt}
-        width={300}
-        height={300}
-      />
+      <Image src={blog.image} alt={blog.image_alt} width={300} height={300} />
 
       <article className={style["post-article"]}>
         <p>{blog.content}</p>
       </article>
 
+      <CommentForm slug={slug} />
       <h1>Comments</h1>
       <div>
         {blog.comments.map((comment: IComment, index: number) => (
-          <Comment key={index} comment={comment} />
+          <BlogComment key={index} comment={comment} />
         ))}
       </div>
     </main>
